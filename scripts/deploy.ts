@@ -1,5 +1,6 @@
 import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { ethers, hardhatArguments } from 'hardhat';
+import { currencies, pairs } from "./data";
 
 function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -29,23 +30,8 @@ async function deployContractsFixture() {
   const fragment = Oracle.interface.getFunction("initialize");
   const data = Oracle.interface.encodeFunctionData(fragment, [
     publisherRegistry.address,
-    [{
-      id: ethers.utils.formatBytes32String('USD'),
-      decimals: 8,
-      isAbstractCurrency: true,
-      ethereumAddress: ethers.constants.AddressZero,
-    },
-    {
-      id: ethers.utils.formatBytes32String('ETH'),
-      decimals: 18,
-      isAbstractCurrency: true,
-      ethereumAddress: ethers.constants.AddressZero,
-    }],
-    [{
-      id: ethers.utils.formatBytes32String('ETH/USD'),
-      quoteCurrencyId: ethers.utils.formatBytes32String('ETH'),
-      baseCurrencyId: ethers.utils.formatBytes32String('USD'),
-    }]
+    currencies,
+    pairs
   ]);
 
   await delay(10000);
@@ -56,82 +42,28 @@ async function deployContractsFixture() {
 
 
 
-  // console.log("addPublisher");
-  // await publisherRegistry.addPublisher(
-  //   ethers.utils.formatBytes32String('DATUM'),
-  //   owner.address,
-  // );
+  console.log("addPublisher");
+  await publisherRegistry.addPublisher(
+    ethers.utils.formatBytes32String('DOM'),
+    owner.address,
+  );
 
-  // await delay(10000);
-  // console.log("addSourcesForPublisher");
-  // await publisherRegistry.addSourcesForPublisher(
-  //   ethers.utils.formatBytes32String('DATUM'),
-  //   [
-  //     ethers.utils.formatBytes32String('SOURCE1'),
-  //     ethers.utils.formatBytes32String('SOURCE2'),
-  //     ethers.utils.formatBytes32String('SOURCE3'),
-  //     ethers.utils.formatBytes32String('SOURCE4'),
-  //   ]
-  // );
-
-  // console.log("publishSpotEntry");
-  // await oracleProxy.connect(owner).publishSpotEntry(
-  //   {
-  //     base: {
-  //       timestamp: timestampBefore + 60,
-  //       source: ethers.utils.formatBytes32String('SOURCE1'),
-  //       publisher: ethers.utils.formatBytes32String('DATUM'),
-  //     },
-  //     pairId: ethers.utils.formatBytes32String('ETH/USD'),
-  //     price: 10000000000,
-  //     volume: 100000,
-  //   }
-  // );
-  // const response = await oracleProxy.getSpot(
-  //   ethers.utils.formatBytes32String('ETH/USD'),
-  //   ethers.BigNumber.from("0"),
-  //   [
-  //     ethers.utils.formatBytes32String('SOURCE1'),
-  //     ethers.utils.formatBytes32String('SOURCE2'),
-  //   ]
-  // );
-
-  // console.log("publishSpotEntry");
-  // await oracleProxy.connect(owner).publishSpotEntry(
-  //   {
-  //     base: {
-  //       timestamp: timestampBefore + 60,
-  //       source: ethers.utils.formatBytes32String('SOURCE2'),
-  //       publisher: ethers.utils.formatBytes32String('DATUM'),
-  //     },
-  //     pairId: ethers.utils.formatBytes32String('ETH/USD'),
-  //     price: 11000000000,
-  //     volume: 100000,
-  //   }
-  // );
-
-  // console.log("getSpot");
-  // const response2 = await oracleProxy.getSpot(
-  //   ethers.utils.formatBytes32String('ETH/USD'),
-  //   ethers.BigNumber.from("0"),
-  //   [
-  //     ethers.utils.formatBytes32String('SOURCE1'),
-  //     ethers.utils.formatBytes32String('SOURCE2'),
-  //   ]
-  // );
-
-
-  // console.log(response);
-  // console.log(response2);
-
-
-
+  await delay(10000);
+  console.log("addSourcesForPublisher");
+  await publisherRegistry.addSourcesForPublisher(
+    ethers.utils.formatBytes32String('DOM'),
+    [
+      ethers.utils.formatBytes32String('BITSTAMP'),
+      ethers.utils.formatBytes32String('COINBASE'),
+      ethers.utils.formatBytes32String('ASCENDEX'),
+      ethers.utils.formatBytes32String('OKX'),
+      ethers.utils.formatBytes32String('GEMINI'),
+    ]
+  );
 }
 
 async function main() {
-
   await deployContractsFixture();
-
 }
 
 
