@@ -20,7 +20,7 @@ contract Oracle is Initializable, CurrencyManager, EntryUtils, IOracle {
     uint256 sourcesThreshold = 1;
 
     uint256 constant BACKWARD_TIMESTAMP_BUFFER = 3600;
-    uint256 constant FORWARD_TIMESTAMP_BUFFER = 900;
+    uint256 constant FORWARD_TIMESTAMP_BUFFER = 3600;
 
     constructor() {
         _disableInitializers();
