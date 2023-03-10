@@ -1,7 +1,7 @@
 # Decentralized Oracle on EVM-Compatile blockchains
   - Filecoin-EVM Contract address:
-    + PublisherRegistry address:  0x9F3A29499D885f0ff9b414E72AfCD3284Cd1c3Ce
-    + Proxy address:  0xbE7c0B7315ba2fe03EA83aB1a4E8f842C6c29CEC
+    + PublisherRegistry address:  0xa22948126B51c0e5a647C9e114Ba1a3592272332
+    + Proxy address:  0xF590112d1A6e45273010a0ba1B032CFa46E71ac7
   - Data Source:
     + Bitstamp
     + Coinbase
