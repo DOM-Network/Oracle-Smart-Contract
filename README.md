@@ -3,9 +3,9 @@
 
 There will be 3 components involved in providing data:
 
-Publishers:  Collect data off-chain and put into Oracle smart contract.
-Publisher Registry Smart Contract: Manage publishers and data sources.
-Oracle Smart Contract: receive data off-chain from Publishers and perform data aggregation.
+- Publishers:  Collect data off-chain and put into Oracle smart contract.
+- Publisher Registry Smart Contract: Manage publishers and data sources.
+- Oracle Smart Contract: receive data off-chain from Publishers and perform data aggregation.
 Publisher Registry Smart Contract adds and updates publishers and data sources -> Eligible publishers collect data from off-chain sources, injecting data into Oracle Smart Contracts ->Oracle Smart Contract performs data aggregation.
 
 
