@@ -14,18 +14,23 @@ async function deployContractsFixture() {
 
   const [owner] = await ethers.getSigners();
   console.log('deploy from address: ', owner.address);
+  const balance = await owner.getBalance();
+  console.log(balance);
 
   const Admin = await ethers.getContractFactory("ProxyAdmin");
   const admin = await Admin.deploy();
   console.log('Admin address: ', admin.address);
+  await delay(10000);
 
   const PublisherRegistry = await ethers.getContractFactory("PublisherRegistry");
   const publisherRegistry = await PublisherRegistry.deploy();
   console.log('PublisherRegistry address: ', publisherRegistry.address);
+  await delay(10000);
 
   const Oracle = await ethers.getContractFactory("Oracle");
   const oracle = await Oracle.deploy();
   console.log('Oracle address: ', oracle.address);
+  await delay(10000);
 
   const fragment = Oracle.interface.getFunction("initialize");
   const data = Oracle.interface.encodeFunctionData(fragment, [
