@@ -9,11 +9,6 @@ There will be 3 components involved in providing data:
 
 Publisher Registry Smart Contract adds and updates publishers and data sources -> Eligible publishers collect data from off-chain sources, injecting data into Oracle Smart Contracts ->Oracle Smart Contract performs data aggregation.
 
-
-
-- Filecoin-EVM Contract address:
-  + PublisherRegistry address:  0xa22948126B51c0e5a647C9e114Ba1a3592272332
-  + Proxy address:  0xF590112d1A6e45273010a0ba1B032CFa46E71ac7
 - Data Source:
   + Bitstamp
   + Coinbase
