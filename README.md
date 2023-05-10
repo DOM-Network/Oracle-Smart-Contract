@@ -1,4 +1,4 @@
-# Decentralized Oracle on EVM-Compatile blockchains
+# Decentralized Oracle on XDC Network
 ![alt text](https://github.com/DOM-Network/EVM-Oracle/blob/main/PriceFeed.PNG)
 
 There will be 3 components involved in providing data:
