@@ -1,4 +1,4 @@
-# Decentralized Oracle on XDC Network
+# Decentralized Oracle
 ![alt text](https://github.com/DOM-Network/EVM-Oracle/blob/main/PriceFeed.PNG)
 
 There will be 3 components involved in providing data:
